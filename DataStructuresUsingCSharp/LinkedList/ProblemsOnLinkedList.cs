@@ -98,5 +98,27 @@ namespace DataStructuresUsingCSharp.LinkedList
             }
             return slow;
         }
+
+        //Reverse a linked list
+        public static Node<T> ReverseList(Node<T> Head)
+        {
+            if (Head != null)
+            {
+                Node<T> curr = Head;
+                Node<T> nextNode = Head.next;
+                
+                while (nextNode != null)
+                {
+                    Node<T> temp = new Node<T>();
+                    temp.data = nextNode.data;
+                    temp.next = curr;
+                    curr = temp;
+                    nextNode = nextNode.next;
+                }
+                Head.next = null;
+                Head = curr;
+            }
+            return Head;
+        }
     }
 }

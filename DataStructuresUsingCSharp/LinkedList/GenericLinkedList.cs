@@ -18,6 +18,10 @@ namespace DataStructuresUsingCSharp.LinkedList
             {
                 return this.Head;
             }
+            set
+            {
+                this.Head = value;
+            }
         }
         //Insert in the begining
         public void AddStart(T data)

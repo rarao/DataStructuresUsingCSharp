@@ -24,6 +24,10 @@ namespace DataStructuresUsingCSharp
 
             obj.ReadAll();
 
+            obj.HEAD = ProblemsOnLinkedList<int>.ReverseList(obj.HEAD);
+
+            obj.ReadAll();
+
             Console.WriteLine("The nth node is : " + ProblemsOnLinkedList<int>.ReturnNthNodeFromEnd(obj.HEAD, 2).data);
 
             Console.ReadLine();
