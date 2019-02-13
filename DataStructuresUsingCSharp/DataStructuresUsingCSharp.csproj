@@ -46,6 +46,7 @@
     <Compile Include="LinkedList\DoublyLinkedList.cs" />
     <Compile Include="LinkedList\CircularLinkedList.cs" />
     <Compile Include="LinkedList\GenericLinkedList.cs" />
+    <Compile Include="LinkedList\RandomPtrLinkedList.cs" />
     <Compile Include="LinkedList\Node.cs" />
     <Compile Include="LinkedList\ProblemsOnLinkedList.cs" />
     <Compile Include="LinkedList\TailLinkedList.cs" />

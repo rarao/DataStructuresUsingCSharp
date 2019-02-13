@@ -11,6 +11,28 @@ namespace DataStructuresUsingCSharp
     {
         static void Main(string[] args)
         {
+            RandomPtrLinkedList<int> obj3 = new RandomPtrLinkedList<int>();
+            obj3.AddEnd(1);
+            obj3.AddEnd(2);
+            obj3.AddEnd(3);
+            obj3.AddEnd(4);
+            obj3.AddEnd(5);
+            obj3.AddEnd(6);
+            obj3.AddEnd(7);
+            obj3.AddEnd(8);
+            obj3.AddEnd(9);
+
+            obj3.SetRandomNodes();
+            obj3.ReadAll();
+
+            RandomPtrLinkedList<int> obj3Clone = new RandomPtrLinkedList<int>();
+            obj3Clone.HEAD = ProblemsOnLinkedList<int>.CloneRandomPtrList(obj3.HEAD);
+
+            Console.WriteLine("Old List : ");
+            obj3.ReadAll();
+            Console.WriteLine("Cloned List : ");
+            obj3Clone.ReadAll();
+
             GenericLinkedList<int> obj = new GenericLinkedList<int>();
             obj.AddStart(78);
             obj.AddStart(89);

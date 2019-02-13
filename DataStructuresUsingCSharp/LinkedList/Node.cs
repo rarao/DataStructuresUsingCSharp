@@ -17,6 +17,12 @@ namespace DataStructuresUsingCSharp.LinkedList
         public T data;
         public Node<T> next = null;
     }
+    public class RNode<T>
+    {
+        public T data;
+        public RNode<T> next = null;
+        public RNode<T> rand = null;
+    }
     public class DNode<T>
     {
         public T data;

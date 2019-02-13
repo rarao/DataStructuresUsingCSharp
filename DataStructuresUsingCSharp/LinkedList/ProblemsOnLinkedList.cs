@@ -183,7 +183,7 @@ namespace DataStructuresUsingCSharp.LinkedList
                     nextNode = curr.next;
                     curr.next = null;
 
-                    if(prevNode == null)
+                    if (prevNode == null)
                         Head = ReverseList(startNode);
                     else
                         prevNode.next = ReverseList(startNode);
@@ -194,6 +194,49 @@ namespace DataStructuresUsingCSharp.LinkedList
                 }
             }
             return Head;
+        }
+
+        //Clone a linked list with Random Ptr
+        public static RNode<T> CloneRandomPtrList(RNode<T> Head)
+        {
+            if (Head != null)
+            {
+                RNode<T> curr = Head;
+
+                while (curr != null)
+                {
+                    RNode<T> temp = new RNode<T>();
+                    temp.data = curr.data;
+                    temp.next = curr.next;
+                    curr.next = temp;
+
+                    curr = curr = temp.next;
+                }
+
+                curr = Head;
+
+                while (curr != null)
+                {
+                    curr.next.rand = curr.rand.next;
+                    curr = curr.next.next;
+                }
+
+                curr = Head;
+                RNode<T> copy = Head.next;
+                RNode<T> temp1 = copy;
+                while (curr != null)
+                {
+                    if (curr.next != null)
+                        curr.next = curr.next.next;
+                    if (temp1.next != null)
+                        temp1.next = temp1.next.next;
+
+                    curr = curr.next;
+                    temp1 = temp1.next;
+                }
+                return copy;
+            }
+            return null;
         }
     }
 }
