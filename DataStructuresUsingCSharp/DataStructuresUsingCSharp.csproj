@@ -53,9 +53,13 @@
     <Compile Include="LinkedList\LinkedList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stacks\LinkedListStack.cs" />
+    <Compile Include="Stacks\ArrayStack.cs" />
+    <Compile Include="Stacks\ProblemsOnStacks.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

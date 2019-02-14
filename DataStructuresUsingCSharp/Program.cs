@@ -1,4 +1,5 @@
 ﻿using DataStructuresUsingCSharp.LinkedList;
+using DataStructuresUsingCSharp.Stacks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace DataStructuresUsingCSharp
     {
         static void Main(string[] args)
         {
+            Console.WriteLine(ProblemsOnStacks.InfixToPostfix("a*b+c-(d+f)"));
+
             RandomPtrLinkedList<int> obj3 = new RandomPtrLinkedList<int>();
             obj3.AddEnd(1);
             obj3.AddEnd(2);
