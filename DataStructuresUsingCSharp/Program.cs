@@ -12,6 +12,8 @@ namespace DataStructuresUsingCSharp
     {
         static void Main(string[] args)
         {
+            Console.WriteLine(ProblemsOnStacks.MaxSpan(new int[] { 100,60,80,90,70,75,11,120}));
+
             Console.WriteLine(ProblemsOnStacks.InfixToPostfix("a*b+c-(d+f)"));
 
             RandomPtrLinkedList<int> obj3 = new RandomPtrLinkedList<int>();

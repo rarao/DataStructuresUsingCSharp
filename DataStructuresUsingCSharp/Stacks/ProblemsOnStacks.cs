@@ -53,7 +53,7 @@ namespace DataStructuresUsingCSharp.Stacks
                     char temp = myStack.Pop();
                     while (temp != '(')
                     {
-                        if(myStack.Count == 0)
+                        if (myStack.Count == 0)
                         {
                             Console.WriteLine("Invalid input.");
                             return null;
@@ -81,12 +81,44 @@ namespace DataStructuresUsingCSharp.Stacks
                 }
             }
 
-            while(myStack.Count != 0)
+            while (myStack.Count != 0)
             {
                 output.Append(myStack.Pop());
             }
 
             return output.ToString();
+        }
+
+        //Finding the max span in an array of integers
+        public static int MaxSpan(int[] arr)
+        {
+            int n = arr.Length;
+
+            Stack<int> myStack = new Stack<int>();
+            myStack.Push(0);
+
+            int maxSpan = 1;
+            int currSpan = maxSpan;
+            for (int i = 1; i < n; i++)
+            {
+                if (arr[myStack.Peek()] <= arr[i])
+                {
+                    while (myStack.Count > 0 && !(arr[myStack.Peek()] > arr[i]))
+                    {
+                        myStack.Pop();
+                    }
+                }
+
+                if (myStack.Count == 0)
+                    currSpan = i + 1;
+                else
+                    currSpan = i - myStack.Peek();
+
+                myStack.Push(i);
+                maxSpan = (maxSpan - currSpan >= 0) ? maxSpan : currSpan;
+            }
+
+            return maxSpan;
         }
     }
 }
