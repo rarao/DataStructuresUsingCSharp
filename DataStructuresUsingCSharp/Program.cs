@@ -13,7 +13,7 @@ namespace DataStructuresUsingCSharp
     {
         static void Main(string[] args)
         {
-            LinkedListQueue<int> objq = new LinkedListQueue<int>();
+            CircularArrayQueue<int> objq = new CircularArrayQueue<int>();
             objq.Enqueue(1);
             objq.Enqueue(2);
             objq.Enqueue(3);
