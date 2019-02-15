@@ -1,4 +1,5 @@
 ﻿using DataStructuresUsingCSharp.LinkedList;
+using DataStructuresUsingCSharp.Queues;
 using DataStructuresUsingCSharp.Stacks;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,16 @@ namespace DataStructuresUsingCSharp
     {
         static void Main(string[] args)
         {
+            LinkedListQueue<int> objq = new LinkedListQueue<int>();
+            objq.Enqueue(1);
+            objq.Enqueue(2);
+            objq.Enqueue(3);
+            objq.Enqueue(6);
+            objq.Dequeue();
+            objq.Enqueue(4);
+            objq.Dequeue();
+            objq.ReadAll();
+
             Console.WriteLine(ProblemsOnStacks.MaxSpan(new int[] { 100,60,80,90,70,75,11,120}));
 
             Console.WriteLine(ProblemsOnStacks.InfixToPostfix("a*b+c-(d+f)"));
