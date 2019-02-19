@@ -1,6 +1,7 @@
 ﻿using DataStructuresUsingCSharp.LinkedList;
 using DataStructuresUsingCSharp.Queues;
 using DataStructuresUsingCSharp.Stacks;
+using DataStructuresUsingCSharp.Trees;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,15 @@ namespace DataStructuresUsingCSharp
     {
         static void Main(string[] args)
         {
+            BinaryTree<int> bTree = new BinaryTree<int>(1);
+            bTree.AddNode(bTree.ROOT, 2, 2);
+            bTree.AddNode(bTree.ROOT, 3, 3);
+            bTree.AddNode(bTree.ROOT, 5, 4);
+            bTree.AddNode(bTree.ROOT, 7, 5);
+            bTree.AddNode(bTree.ROOT, 11, 6);
+
+            bTree.LevelOrderTraversal();
+
             CircularArrayQueue<int> objq = new CircularArrayQueue<int>();
             objq.Enqueue(1);
             objq.Enqueue(2);
