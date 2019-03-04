@@ -14,6 +14,22 @@ namespace DataStructuresUsingCSharp
     {
         static void Main(string[] args)
         {
+            AVLTree avlTree = new AVLTree(1);
+            avlTree.InsertNode(2);
+            avlTree.InsertNode(3);
+            avlTree.InsertNode(4);
+            avlTree.InsertNode(5);
+            avlTree.InsertNode(6);
+            avlTree.InsertNode(7);
+            avlTree.InsertNode(8);
+
+            avlTree.LevelOrderTraversal();
+
+            avlTree.ROOT = avlTree.DeleteNode(avlTree.ROOT, 1);
+            avlTree.ROOT = avlTree.DeleteNode(avlTree.ROOT, 3);
+            Console.WriteLine();
+            avlTree.LevelOrderTraversal();
+
             BinaryTree<int> bTree = new BinaryTree<int>(1);
             bTree.AddNode(bTree.ROOT, 2, 2);
             bTree.AddNode(bTree.ROOT, 3, 3);
