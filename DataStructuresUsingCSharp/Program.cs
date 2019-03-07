@@ -14,6 +14,17 @@ namespace DataStructuresUsingCSharp
     {
         static void Main(string[] args)
         {
+            RBTree rbTree = new RBTree(1);
+            rbTree.InsertNode(2);
+            rbTree.InsertNode(3);
+            rbTree.InsertNode(4);
+            rbTree.InsertNode(5);
+            rbTree.InsertNode(6);
+            rbTree.InsertNode(7);
+            rbTree.InsertNode(8);
+
+            rbTree.LevelOrderTraversal();
+
             AVLTree avlTree = new AVLTree(1);
             avlTree.InsertNode(2);
             avlTree.InsertNode(3);

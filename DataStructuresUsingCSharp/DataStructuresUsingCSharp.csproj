@@ -58,6 +58,7 @@
     <Compile Include="Stacks\LinkedListStack.cs" />
     <Compile Include="Stacks\ArrayStack.cs" />
     <Compile Include="Stacks\ProblemsOnStacks.cs" />
+    <Compile Include="Trees\RBTree.cs" />
     <Compile Include="Trees\AVLTree.cs" />
     <Compile Include="Trees\BinarySearchTree.cs" />
     <Compile Include="Trees\BinaryTree.cs" />
