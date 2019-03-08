@@ -25,6 +25,14 @@ namespace DataStructuresUsingCSharp
 
             rbTree.LevelOrderTraversal();
 
+            rbTree.ROOT = rbTree.DeleteNode(rbTree.ROOT, 1);
+            rbTree.ROOT = rbTree.DeleteNode(rbTree.ROOT, 3);
+            Console.WriteLine();
+            rbTree.LevelOrderTraversal();
+            rbTree.ROOT = rbTree.DeleteNode(rbTree.ROOT, 7);
+            Console.WriteLine();
+            rbTree.LevelOrderTraversal();
+
             AVLTree avlTree = new AVLTree(1);
             avlTree.InsertNode(2);
             avlTree.InsertNode(3);

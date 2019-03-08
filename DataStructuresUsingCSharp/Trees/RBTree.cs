@@ -121,39 +121,194 @@ namespace DataStructuresUsingCSharp.Trees
             root.color = 1;
         }
 
-        //public RBNode DeleteNode(RBNode rootnode, int val)
-        //{
-        //    if (rootnode != null)
-        //    {
-        //        if (rootnode.data == val)
-        //        {
-        //            if (rootnode.left == null || rootnode.right == null)
-        //            {
-        //                if (rootnode.left != null)
-        //                    rootnode = rootnode.left;
-        //                else
-        //                    rootnode = rootnode.right;
-        //            }
-        //            else
-        //            {
-        //                RBNode temp = FindMax(rootnode.left);
-        //                rootnode.data = temp.data;
-        //                rootnode.left = DeleteNode(rootnode.left, temp.data);
-        //            }
-        //        }
-        //        else if (rootnode.data > val)
-        //            rootnode.left = DeleteNode(rootnode.left, val);
-        //        else
-        //            rootnode.right = DeleteNode(rootnode.right, val);
+        public RBNode DeleteNode(RBNode rootnode, int val)
+        {
+            bool doubleBlackExists = false;
+            RBNode parent = null;
+            if (rootnode != null)
+            {
+                if (rootnode.data == val)
+                {
+                    if (rootnode.left == null || rootnode.right == null)
+                    {
+                        bool isLeft = true;
+                        parent = rootnode.parent;
+                        if (parent != null)
+                        {
+                            if (parent.right == rootnode)
+                                isLeft = false;
+                        }
 
-        //        if (rootnode != null)
-        //        {
-        //            Update(rootnode);
-        //            rootnode = Balance(rootnode);
-        //        }
-        //    }
-        //    return rootnode;
-        //}
+                        if (rootnode.color == 1)
+                            doubleBlackExists = true;
+
+                        if (rootnode.left != null)
+                        {
+                            rootnode = rootnode.left;
+                            rootnode.parent = parent;
+                        }
+                        else if (rootnode.right != null)
+                        {
+                            rootnode = rootnode.right;
+                            rootnode.parent = parent;
+                        }
+                        else
+                        {
+                            rootnode = null;
+                        }
+                        if (parent != null)
+                        {
+                            if (isLeft)
+                                parent.left = rootnode;
+                            else
+                                parent.right = rootnode;
+                        }
+                    }
+                    else
+                    {
+                        RBNode temp = FindMax(rootnode.left);
+                        rootnode.data = temp.data;
+
+                        rootnode = DeleteNode(rootnode.left, temp.data);
+                    }
+                }
+                else if (rootnode.data > val)
+                    rootnode = DeleteNode(rootnode.left, val);
+                else
+                    rootnode = DeleteNode(rootnode.right, val);
+
+                if (doubleBlackExists)
+                    rootnode = RemoveDoubleBlack(rootnode, parent);
+
+                if (rootnode == null)
+                    rootnode = parent;
+                while (rootnode.parent != null)
+                {
+                    rootnode = rootnode.parent;
+                }
+            }
+
+            return rootnode;
+        }
+
+        private static bool IsBlack(RBNode node)
+        {
+            return (node == null || node.color == 1);
+        }
+        private static bool IsRed(RBNode node)
+        {
+            return (node != null && node.color == 0);
+        }
+
+        private RBNode RemoveDoubleBlack(RBNode db, RBNode parent)
+        {
+            bool dbExist = false;
+            if (parent == null)
+            {
+                return db;
+            }
+            if (parent.left == db)
+            {
+                if (parent.right == null)
+                {
+                    if (parent.color == 0)
+                        parent.color = 1;
+                    else
+                        dbExist = true;
+                    db = parent;
+                }
+                else if (parent.right.color == 0)
+                {
+                    SwapColors(parent, parent.right);
+                    LeftRotation(parent);
+                    return RemoveDoubleBlack(db, parent);
+                }
+                else if ((parent.right.color == 1 && IsBlack(parent.right.right) && IsBlack(parent.right.left)))
+                {
+                    if (parent.color == 0)
+                        parent.color = 1;
+                    else
+                        dbExist = true;
+                    parent.right.color = 0;
+                    db = parent;
+                }
+                else if ((parent.right.color == 1 && IsBlack(parent.right.right) && IsRed(parent.right.left)))
+                {
+                    SwapColors(parent.right, parent.right.left);
+                    RightRotation(parent.right);
+                }
+                if ((parent.right.color == 1 && IsRed(parent.right.right)))
+                {
+                    SwapColors(parent, parent.right);
+                    LeftRotation(parent);
+                    if (parent.color == 0)
+                        parent.color = 1;
+                    else
+                        dbExist = true;
+                    parent.right.right.color = 1;
+                    db = parent;
+                }
+            }
+            else
+            {
+                if (parent.left == null)
+                {
+                    if (parent.color == 0)
+                        parent.color = 1;
+                    else
+                        dbExist = true;
+                    db = parent;
+                }
+                else if (parent.left.color == 0)
+                {
+                    SwapColors(parent, parent.left);
+                    RightRotation(parent);
+                    return RemoveDoubleBlack(db, parent);
+                }
+                else if ((parent.left.color == 1 && IsBlack(parent.left.left) && IsBlack(parent.left.right)))
+                {
+                    if (parent.color == 0)
+                        parent.color = 1;
+                    else
+                        dbExist = true;
+                    parent.left.color = 0;
+                    db = parent;
+                }
+                else if ((parent.left.color == 1 && IsBlack(parent.left.left) && IsRed(parent.left.right)))
+                {
+                    SwapColors(parent.left, parent.left.right);
+                    LeftRotation(parent.left);
+                }
+                if ((parent.left.color == 1 && IsRed(parent.left.left)))
+                {
+                    SwapColors(parent, parent.left);
+                    RightRotation(parent);
+                    if (parent.color == 0)
+                        parent.color = 1;
+                    else
+                        dbExist = true;
+                    parent.left.left.color = 1;
+                    db = parent;
+                }
+            }
+            if (dbExist)
+                return RemoveDoubleBlack(db.parent, db.parent.parent);
+            else
+            {
+                while (db.parent != null)
+                {
+                    db = db.parent;
+                }
+                return db;
+            }
+        }
+
+        private void SwapColors(RBNode a, RBNode b)
+        {
+            int temp = a.color;
+            a.color = b.color;
+            b.color = temp;
+        }
 
         private RBNode FindMax(RBNode rootnode)
         {
@@ -176,10 +331,10 @@ namespace DataStructuresUsingCSharp.Trees
 
             temp.parent = node.parent;
             node.parent = temp;
-            
+
             if (node.right != null)
                 node.right.parent = node;
-            if(temp.parent!=null)
+            if (temp.parent != null)
                 temp.parent.right = temp;
 
             return temp;
