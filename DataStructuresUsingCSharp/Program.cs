@@ -2,6 +2,7 @@
 using DataStructuresUsingCSharp.Queues;
 using DataStructuresUsingCSharp.Stacks;
 using DataStructuresUsingCSharp.Trees;
+using Sorting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,14 @@ namespace DataStructuresUsingCSharp
     {
         static void Main(string[] args)
         {
+            int []arr = new int[]{8,10,4,10,0,45,102,1,45,76,98,33};
+            SortingAlgorithm.BubbleSort(arr);
+
+            for(int i=0;i<arr.Length;i++)
+            {
+                Console.WriteLine(arr[i]);
+            }
+
             RBTree rbTree = new RBTree(1);
             rbTree.InsertNode(2);
             rbTree.InsertNode(3);
