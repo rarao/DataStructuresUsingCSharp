@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructuresUsingCSharp", "DataStructuresUsingCSharp\DataStructuresUsingCSharp.csproj", "{86E290D6-05F8-495B-884D-3248A2AE2756}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorting", "Sorting\Sorting.csproj", "{1643D440-6548-4DC6-B8C5-08A01728D818}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{86E290D6-05F8-495B-884D-3248A2AE2756}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86E290D6-05F8-495B-884D-3248A2AE2756}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86E290D6-05F8-495B-884D-3248A2AE2756}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1643D440-6548-4DC6-B8C5-08A01728D818}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1643D440-6548-4DC6-B8C5-08A01728D818}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1643D440-6548-4DC6-B8C5-08A01728D818}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1643D440-6548-4DC6-B8C5-08A01728D818}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

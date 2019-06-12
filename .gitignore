@@ -3,5 +3,8 @@
 ################################################################################
 
 /.vs
+/.vscode
 /DataStructuresUsingCSharp/bin
 /DataStructuresUsingCSharp/obj
+/Sorting/obj
+/Sorting/bin
