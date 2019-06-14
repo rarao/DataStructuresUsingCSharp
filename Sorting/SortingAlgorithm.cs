@@ -58,5 +58,44 @@ namespace Sorting
                 arr[j + 1] = temp;
             }
         }
+
+        public static void MergeSort(int[] arr, int start, int end)
+        {
+            if (start >= end)
+                return;
+
+            int mid = (start + end) / 2;
+
+            MergeSort(arr, start, mid);
+            MergeSort(arr, mid + 1, end);
+
+            Merge(arr, start, end);
+        }
+
+        private static void Merge(int[] arr, int start1, int end2)
+        {
+            int end1 = (start1 + end2) / 2;
+            int start2 = end1 + 1;
+
+            int[] temp = new int[end2 - start1 + 1];
+
+            int first = start1;
+            int second = start2;
+            int index = 0;
+
+            while(first<=end1 && second <=end2)
+            {
+                temp[index++] = (arr[first] <= arr[second]) ?  arr[first++] : arr[second++];
+            }
+
+            while (first <= end1)
+                temp[index++] = arr[first++];
+
+            while (second <= end2)
+                temp[index++] = arr[second++];
+
+            for (int i = 0; i < index; i++)
+                arr[start1++] = temp[i];
+        }
     }
 }
