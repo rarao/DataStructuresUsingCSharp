@@ -83,9 +83,9 @@ namespace Sorting
             int second = start2;
             int index = 0;
 
-            while(first<=end1 && second <=end2)
+            while (first <= end1 && second <= end2)
             {
-                temp[index++] = (arr[first] <= arr[second]) ?  arr[first++] : arr[second++];
+                temp[index++] = (arr[first] <= arr[second]) ? arr[first++] : arr[second++];
             }
 
             while (first <= end1)
@@ -107,14 +107,14 @@ namespace Sorting
 
             int gap = 1;
 
-            while(gap<n/3)
+            while (gap < n / 3)
             {
                 gap = 3 * gap + 1;
             }
 
             while (gap >= 1)
             {
-                for (int i = 0; i < (n-1) / gap; i += gap)
+                for (int i = 0; i < (n - 1) / gap; i += gap)
                 {
                     int j = i;
                     int temp = arr[i + gap];
@@ -126,6 +126,39 @@ namespace Sorting
                 }
                 gap /= 3;
             }
+        }
+
+        public static void QuickSort(int[] arr, int start, int end)
+        {
+            if (start >= end)
+                return;
+
+            int pivot = Partition(arr, start, end);
+
+            QuickSort(arr, start, pivot - 1);
+            QuickSort(arr, pivot + 1, end);
+        }
+
+        private static int Partition(int[] arr, int start, int end)
+        {
+            int pivot = start;
+
+            int i = start + 1;
+            int j = end;
+
+            while (i <= j)
+            {
+                while ((i <= j) && arr[i] <= arr[pivot])
+                    i++;
+                while ((i <= j) && arr[j] > arr[pivot])
+                    j--;
+                if (i < j)
+                    Swap(ref arr[i], ref arr[j]);
+            }
+
+            Swap(ref arr[pivot], ref arr[j]);
+
+            return j;
         }
     }
 }
