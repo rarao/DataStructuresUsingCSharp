@@ -17,7 +17,7 @@ namespace DataStructuresUsingCSharp
         {
             int []arr = new int[]{8,10,4,10,0,45,102,1,45,11,12,12,3,899,76,98,33};
             //SortingAlgorithm.MergeSort(arr,0,arr.Length-1);
-            SortingAlgorithm.QuickSort(arr,0,arr.Length-1);
+            SortingAlgorithm.ShellSort(arr);
 
             for (int i=0;i<arr.Length;i++)
             {

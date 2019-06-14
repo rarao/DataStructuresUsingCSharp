@@ -114,7 +114,7 @@ namespace Sorting
 
             while (gap >= 1)
             {
-                for (int i = 0; i < (n - 1) / gap; i += gap)
+                for (int i = 0; i < (n - gap); i += gap)
                 {
                     int j = i;
                     int temp = arr[i + gap];
