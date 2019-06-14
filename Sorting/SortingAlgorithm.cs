@@ -97,5 +97,35 @@ namespace Sorting
             for (int i = 0; i < index; i++)
                 arr[start1++] = temp[i];
         }
+
+        //Generalized form of insertion sort. Here the idea is to bring the smaller element present far away in the list
+        // in the beginning of the list . This is done by chosing a gap using a recurrence relation (n=3n+1, known as knuth sequence)
+        // and then decreasing the gap eventually. Insertion sort is applied on the elements with the gap assuming the other elements doesnot exist.
+        public static void ShellSort(int[] arr)
+        {
+            int n = arr.Length;
+
+            int gap = 1;
+
+            while(gap<n/3)
+            {
+                gap = 3 * gap + 1;
+            }
+
+            while (gap >= 1)
+            {
+                for (int i = 0; i < (n-1) / gap; i += gap)
+                {
+                    int j = i;
+                    int temp = arr[i + gap];
+                    for (; j >= 0 && arr[j] > temp; j = j - gap)
+                    {
+                        arr[j + gap] = arr[j];
+                    }
+                    arr[j + gap] = temp;
+                }
+                gap /= 3;
+            }
+        }
     }
 }
