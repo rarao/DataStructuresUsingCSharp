@@ -1,4 +1,5 @@
-﻿using DataStructuresUsingCSharp.LinkedList;
+﻿using DataStructuresUsingCSharp.HeapAndPriorityQueue;
+using DataStructuresUsingCSharp.LinkedList;
 using DataStructuresUsingCSharp.Queues;
 using DataStructuresUsingCSharp.Stacks;
 using DataStructuresUsingCSharp.Trees;
@@ -15,9 +16,21 @@ namespace DataStructuresUsingCSharp
     {
         static void Main(string[] args)
         {
+            //BinaryHeap bheap = new BinaryHeap(3);
+            //bheap.Insert(5);
+            //bheap.Insert(5);
+            //bheap.Insert(6);
+            //bheap.Insert(1);
+            //bheap.Insert(2);
+
+            //bheap.Remove();
+            //bheap.Insert(4);
+            //bheap.PrintAll();
+
+
             int []arr = new int[]{8,10,4,10,0,45,102,1,45,11,12,12,3,899,76,98,33};
             //SortingAlgorithm.MergeSort(arr,0,arr.Length-1);
-            SortingAlgorithm.ShellSort(arr);
+            SortingAlgorithm.HeapSort(arr);
 
             for (int i=0;i<arr.Length;i++)
             {

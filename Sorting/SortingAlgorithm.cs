@@ -160,5 +160,56 @@ namespace Sorting
 
             return j;
         }
+
+        public static void HeapSort(int[] arr)
+        {
+            for (int i = 1; i < arr.Length; i++)
+            {
+                CreateHeap(arr, i + 1);
+            }
+
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                int temp = arr[0];
+                arr[0] = arr[arr.Length - i - 1];
+                arr[arr.Length - i - 1] = temp;
+
+                Heapify(arr, 0, arr.Length - i - 1);
+            }
+        }
+        private static void CreateHeap(int[] HeapArray, int count)
+        {
+            for (int i = count - 1; i >= 1; i = (i - 1) / 2)
+            {
+                if (HeapArray[i] > HeapArray[(i - 1) / 2])
+                {
+                    int temp = HeapArray[i];
+                    HeapArray[i] = HeapArray[(i - 1) / 2];
+                    HeapArray[(i - 1) / 2] = temp;
+                }
+                else
+                    break;
+            }
+        }
+        private static void Heapify(int[] HeapArray, int rootIndex, int count)
+        {
+            int i = rootIndex;
+            while (i <= (count - 2) / 2)
+            {
+                int childIndex = (HeapArray[2 * i + 1] > HeapArray[2 * i + 2]) ? 2 * i + 1 : 2 * i + 2;
+                if (childIndex >= count)
+                    childIndex = count - 1;
+
+                if (HeapArray[i] < HeapArray[childIndex])
+                {
+                    int temp = HeapArray[i];
+                    HeapArray[i] = HeapArray[childIndex];
+                    HeapArray[childIndex] = temp;
+                    i = childIndex;
+                }
+                else
+                    break;
+            }
+        }
     }
 }
