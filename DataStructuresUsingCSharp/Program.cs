@@ -14,19 +14,133 @@ namespace DataStructuresUsingCSharp
 {
     class Program
     {
+        public struct Circle
+        {
+            public int x;
+            public int y;
+            public int r;
+        }
+        public struct Rect
+        {
+            public int x1;
+            public int y1;
+            public int x2;
+            public int y2;
+        }
+        public static double CalculateAreaInsideRect(List<Circle> circles, Rect rect)
+        {
+            double totalArea = 0;
+            foreach (var cir in circles)
+            {
+                double excludeArea = 0;
+                if (cir.x - cir.r < rect.x1)
+                {
+                    excludeArea += ExcludeArea(rect.x1 - (cir.x - cir.r), cir.r);
+                }
+                if (cir.x + cir.r > rect.x2)
+                {
+                    excludeArea += ExcludeArea((cir.x + cir.r) - rect.x2, cir.r);
+                }
+                if (cir.y - cir.r < rect.y1)
+                {
+                    excludeArea += ExcludeArea(rect.y1 - (cir.y - cir.r), cir.r);
+                }
+                if (cir.y + cir.r > rect.y2)
+                {
+                    excludeArea += ExcludeArea((cir.y + cir.r) - rect.y2, cir.r);
+                }
+                double area = 3.14 * cir.r * cir.r - excludeArea;
+                totalArea += area;
+            }
+            return totalArea;
+        }
+        public static double ExcludeArea(double l, int r)
+        {
+            double h;
+            double theta;
+            if (l >= 2*r)
+            {
+                return 3.14 * r * r;
+            }
+            else if(l==r)
+            {
+                return 3.14 * r * r / 2;
+            }
+
+            h = Math.Abs(l - r);
+            double segmentArea = r * r *(Math.Cosh(h / r)) - h * Math.Sqrt(r * r - h * h);
+
+            if (l > r)
+                segmentArea = 3.14 * r * r - segmentArea;
+
+            return segmentArea;
+        }
         static void Main(string[] args)
         {
-            //BinaryHeap bheap = new BinaryHeap(3);
-            //bheap.Insert(5);
-            //bheap.Insert(5);
-            //bheap.Insert(6);
-            //bheap.Insert(1);
-            //bheap.Insert(2);
+        string line1 = Console.ReadLine();
+            int N = Convert.ToInt32(line1.Split()[0]);
+            int Q = Convert.ToInt32(line1.Split()[1]);
 
-            //bheap.Remove();
-            //bheap.Insert(4);
-            //bheap.PrintAll();
+            List<Circle> circles = new List<Circle>();
+            for (int i = 0; i < N; i++)
+            {
+                Circle c;
+                string line2 = Console.ReadLine();
+                c.x = Convert.ToInt32(line2.Split()[0]);
+                c.y = Convert.ToInt32(line2.Split()[1]);
+                c.r = Convert.ToInt32(line2.Split()[2]);
+                circles.Add(c);
+            }
 
+            List<Rect> rectangles = new List<Rect>();
+            for (int i = 0; i < Q; i++)
+            {
+                Rect r;
+                string line3 = Console.ReadLine();
+                r.x1 = Convert.ToInt32(line3.Split()[0]);
+                r.y1 = Convert.ToInt32(line3.Split()[1]);
+                r.x2 = Convert.ToInt32(line3.Split()[2]);
+                r.y2 = Convert.ToInt32(line3.Split()[3]);
+                rectangles.Add(r);
+            }
+
+            foreach (var rectangle in rectangles)
+            {
+                Console.WriteLine(CalculateAreaInsideRect(circles, rectangle));
+            }
+            int[] states = { 0, 1, 0, 0, 1, 0, 1, 0 };
+            string binary1 = "";
+
+            for (int i = 0; i < states.Length; i++)
+            {
+                binary1 += states[i].ToString();
+            }
+            int decimal1 = Convert.ToInt32(binary1, 2);
+            string result = binary1;
+            for (int k = 0; k < 2; k++)
+            {
+                int decimal2 = decimal1 << 2;
+
+                int resultDecimal = decimal1 ^ decimal2;
+
+                resultDecimal = resultDecimal >> 1;
+                result = Convert.ToString(resultDecimal, 2);
+
+
+                for (int i = 0; i < 8 - result.Length; i++)
+                {
+                    result = "0" + result;
+                }
+
+                result = result.Substring(result.Length - 8);
+                decimal1 = Convert.ToInt32(result, 2);
+            }
+
+            int[] FinalStates = new int[8];
+            for (int i = 0; i < result.Length; i++)
+            {
+                FinalStates[i] = Convert.ToInt32(result[i] - 48);
+            }
 
             int []arr = new int[]{8,10,4,10,0,45,102,1,45,11,12,12,3,899,76,98,33};
             //SortingAlgorithm.MergeSort(arr,0,arr.Length-1);

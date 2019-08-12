@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -211,6 +212,7 @@ namespace DataStructuresUsingCSharp.LinkedList
                     curr.next = temp;
 
                     curr = curr = temp.next;
+
                 }
 
                 curr = Head;
@@ -237,6 +239,39 @@ namespace DataStructuresUsingCSharp.LinkedList
                 return copy;
             }
             return null;
+        }
+
+        public static void CSharpInBuiltDataStructures()
+        {
+            //Generics
+            LinkedList<T> linkedList = new LinkedList<T>();
+            Stack<T> stack = new Stack<T>();
+            Queue<T> queue = new Queue<T>();
+
+            List<int> ls = new List<int>();   //Array
+            SortedSet<T> sortedSet = new SortedSet<T>();    //RB Tree
+            HashSet<int> hashSet = new HashSet<int>();          //Hashtable  
+            Dictionary<int, int> dic = new Dictionary<int, int>();  //Hashtable
+            SortedDictionary<int, int> sDic = new SortedDictionary<int, int>();    //RBTree
+            SortedList<int, int> sortedList = new SortedList<int, int>();     //Array  (Memory efficient than SortedDictionary but slow in retrieval,insertion and deletion)
+
+            KeyValuePair<int, int> kvp = new KeyValuePair<int, int>();
+
+
+            //Non Generics
+            Stack st = new Stack();
+            Queue q = new Queue();            
+
+            ArrayList aL = new ArrayList();
+            Hashtable hT = new Hashtable();
+            SortedList sL = new SortedList();
+
+            DictionaryEntry dENtry = new DictionaryEntry();
+            
+            //**********************
+            
+
+            
         }
     }
 }

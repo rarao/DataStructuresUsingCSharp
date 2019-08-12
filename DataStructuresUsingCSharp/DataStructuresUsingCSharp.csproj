@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Graphs\Graph.cs" />
     <Compile Include="HeapAndPriorityQueue\BinaryHeap.cs" />
     <Compile Include="LinkedList\DoublyLinkedList.cs" />
     <Compile Include="LinkedList\CircularLinkedList.cs" />
